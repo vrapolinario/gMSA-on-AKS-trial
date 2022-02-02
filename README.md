@@ -2,7 +2,6 @@
 
 Welcome to the "Deploy AKS for gMSA validation" PowerShell script. 
 Use the instructions below to deploy a new Azure environment to try out the gMSA on AKS feature.
-This was first published in this [blog post](URL)
 
 ## Intro
 In a nutshell, gMSA allows applications that are Active Directory (AD) dependent to be containerized. By default, containers don’t understand AD as they can’t be domain-joined. With gMSA, we give the underlying container host the task of authenticating the application inside the container. This feature is currently on Public Preview on AKS.
