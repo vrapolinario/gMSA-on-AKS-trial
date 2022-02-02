@@ -21,6 +21,12 @@ Download the ps1 files to your machine. The three files are:
 - Cleanup.ps1:
   - Optional file. Can be used to delete the Azure resources created in this exercise.
 
+## Known Issues
+
+- An error with SSH keys occurs when deploying the AKS cluster: This happens because the script is currently hardcoded to "-generatesshkeys".
+  - Workaround 1: You can change the script to point to your existing SSH Keys.
+  - Workaround 2: If the existing keys are not being used, you can delete existing keys on your user profile and create a new one when running this script.
+
 For questions, comments, and feedback, feel free to reach out to me:
 - [E-mail](mailto:viniap@microsoft)
 - [Twitter](https://www.twitter.com/vrapolinario)
