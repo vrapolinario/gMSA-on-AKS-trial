@@ -23,10 +23,6 @@ Download the ps1 files to your machine. The three files are:
 
 ## Known Issues
 
-## July 12, 2022 update
-
-- Removed the references to Az CLI, since the PowerShell module has been fixed and now clusters created with this module are created using Managed Identities.
-
 ## March 22, 2022 update
 
   - Changed the command to create the AKS cluster from AzAks PowerShell to Az CLI. This because the PS module does not support creating a cluster with Manage Identity, which is required by AKS. This will be reverted back once the PS module supports that.
