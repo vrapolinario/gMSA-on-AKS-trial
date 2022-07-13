@@ -6,8 +6,8 @@
 #Login and select subscription
 $Az_Sub = Read-Host -Prompt 'Please provide the Azure subscription ID to be used'
 Connect-AzAccount -DeviceCode -Subscription $Az_Sub
-az login --use-device-code
-az account set --subscription $Az_Sub
+#az login --use-device-code
+#az account set --subscription $Az_Sub
 
 #Create a Resource Group on Azure on which the resources will be deployed to
 $RG_Name = Read-Host -Prompt "Please provide the Resource Group Name"
@@ -46,8 +46,8 @@ $Username = Read-Host -Prompt 'Please create a username for the administrator cr
 $Password = Read-Host -Prompt 'Please create a password for the administrator credentials on your Windows Server nodes' -AsSecureString
 $vnetinfo = Get-AzVirtualNetwork -Name $vNet_Name -ResourceGroupName $RG_Name
 $subnetid = $vnetinfo.Subnets[0].Id
-#New-AzAksCluster -ResourceGroupName $RG_Name -Name $AKSCluster_Name -NodeCount 2 -NetworkPlugin azure -NodeVnetSubnetID $subnetid -ServiceCidr '10.240.0.0/16' -DnsServiceIP '10.240.0.10' -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password
-az aks create --resource-group $RG_Name --name $AKSCluster_Name --node-count 2 --network-plugin azure --vnet-subnet-id $subnetid --service-cidr '10.240.0.0/16' --dns-service-ip '10.240.0.10' --vm-set-type VirtualMachineScaleSets --windows-admin-username $Username --windows-admin-password $Password --enable-managed-identity
+New-AzAksCluster -ResourceGroupName $RG_Name -Name $AKSCluster_Name -NodeCount 2 -NetworkPlugin azure -NodeVnetSubnetID $subnetid -ServiceCidr '10.240.0.0/16' -DnsServiceIP '10.240.0.10' -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password -EnableManagedIdentity
+#az aks create --resource-group $RG_Name --name $AKSCluster_Name --node-count 2 --network-plugin azure --vnet-subnet-id $subnetid --service-cidr '10.240.0.0/16' --dns-service-ip '10.240.0.10' --vm-set-type VirtualMachineScaleSets --windows-admin-username $Username --windows-admin-password $Password --enable-managed-identity
 
 #Creates new pool for Windows nodes
 $AKSPool_Name = Read-Host -Prompt 'Please provide the name of the node pool that will host your Windows nodes (lowercase only, limited to 6 characters)'
