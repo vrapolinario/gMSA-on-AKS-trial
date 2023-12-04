@@ -29,7 +29,7 @@ $Subnet_Name = Read-Host 'Please provide the name of the Subnet to be created un
 $subnet = @{
     Name = $Subnet_Name
     VirtualNetwork = $virtualNetwork
-    AddressPrefix = '10.0.0.0/16'
+    AddressPrefix = '10.0.0.0/24'
 }
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
 
